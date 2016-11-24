@@ -17,6 +17,7 @@ namespace KryckoBlogSystem.Models
         public KryckoApplicationUser()
         {
             this.Posts = new HashSet<Post>();
+            this.PostsComments = new HashSet<PostComment>();
         }
 
         //[Key]

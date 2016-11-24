@@ -11,6 +11,8 @@ namespace KryckoBlogSystem.Controllers
     {
         public ActionResult Index()
         {
+            var post = this.PersistenceContext.Posts.FirstOrDefault();
+
             ICollection<PostViewModel> posts = this.PersistenceContext.Posts.Select(p =>
             new PostViewModel()
             {

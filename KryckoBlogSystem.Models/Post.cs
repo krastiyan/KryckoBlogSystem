@@ -17,6 +17,6 @@ namespace KryckoBlogSystem.Models
 
         public virtual KryckoApplicationUser User { get; set; }
 
-        public virtual List<PostComment> Comments { get; set; }
+        public virtual ICollection<PostComment> Comments { get; set; }
     }
 }
