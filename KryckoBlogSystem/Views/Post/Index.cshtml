@@ -1,0 +1,31 @@
+﻿@using KryckoBlogSystem.Models
+@{
+    ViewBag.Title = "Make a Post Page";
+
+}
+
+@model IEnumerable<PostViewModel>
+
+<h1>List of all posts follows...</h1>
+
+@foreach (var post in Model)
+{
+    <div class="jumbotron">
+        <h1 class="text-center">@post.Name</h1>
+        <div>Created by: @post.UserName - goodman :)</div>
+        <p>
+            @post.Content
+        </p>
+        <br />
+        @Html.ActionLink("Do comment this!", "Create", "PostComment", new { commentedPostID = post.PostID }, null)
+
+        <br /><span>Comments of this post:</span><br />
+        @foreach (var comment in post.Comments)
+        {
+            <div>Comment by: @comment.CommentAuthor.UserName - goodman commenter :)</div>
+            <p>
+                @comment.Content
+            </p>
+        }
+    </div>
+}

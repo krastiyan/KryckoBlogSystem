@@ -1,0 +1,23 @@
+﻿@using KryckoBlogSystem.Models
+@model PostCommentViewModel
+
+@{
+    ViewBag.Title = "Comment the Post";
+}
+
+<h2>Create view shows</h2>
+@using (Html.BeginForm("Create", "PostComment", @*new { Model.CommentedPostID},*@ FormMethod.Post))
+{
+    <div>
+        @Html.HiddenFor(model => model.CommentAuthor)
+        @Html.HiddenFor(model => model.CommentedPostID)
+        @Html.LabelFor(model => model.CommentAuthor)
+        @Html.DisplayTextFor(model => model.CommentAuthor)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Content)
+        @Html.TextBoxFor(model => model.Content, new { @class = "form-control" })
+    </div>
+    <input type="submit" label="Do that Post"/>
+ }
+
