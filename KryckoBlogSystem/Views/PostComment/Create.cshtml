@@ -7,6 +7,7 @@
 
 <h2>Create view shows</h2>
 @using (Html.BeginForm("Create", "PostComment", @*new { Model.CommentedPostID},*@ FormMethod.Post))
+@*@using (Ajax.BeginForm("Create", "PostComment", new AjaxOptions { HttpMethod = "Post"}))*@
 {
     <div>
         @Html.HiddenFor(model => model.CommentAuthor)

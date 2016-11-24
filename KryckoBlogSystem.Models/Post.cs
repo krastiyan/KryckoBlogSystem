@@ -9,6 +9,11 @@ namespace KryckoBlogSystem.Models
 {
     public class Post
     {
+        public Post()
+        {
+            this.Comments = new HashSet<PostComment>();
+        }
+
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }

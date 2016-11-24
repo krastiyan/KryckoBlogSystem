@@ -9,19 +9,6 @@ namespace KryckoBlogSystem.Controllers
 {
     public class PostCommentController : BaseController
     {
-        //public ActionResult Index()
-        //{
-        //    ICollection<PostViewModel> posts = this.PersistenceContext.Posts.Select(p =>
-        //    new PostViewModel()
-        //    {
-        //        Content = p.Content,
-        //        Name = p.Name,
-        //        UserName = p.User.UserName
-        //    }
-        //    )
-        //    .ToList();
-        //    return View(posts);
-        //}
 
         [HttpGet]
         public ActionResult Create(int commentedPostID)
@@ -29,15 +16,15 @@ namespace KryckoBlogSystem.Controllers
             return View(new PostCommentViewModel()
             {
                 CommentedPostID = commentedPostID,
-                CommentAuthor = HttpContext.User.Identity.Name//this.PersistenceContext.Users.FirstOrDefault(u => u.UserName == HttpContext.User.Identity.Name).UserName
+                CommentAuthor = HttpContext.User.Identity.Name
             });
         }
 
         [HttpPost]
         public ActionResult Create(PostCommentViewModel theComment)
         {
-            var user = this.PersistenceContext.Users.FirstOrDefault(u => u.UserName == theComment.CommentAuthor);// HttpContext.User.Identity.Name);
-            var post = this.PersistenceContext.Posts.FirstOrDefault(p => p.Id == theComment.CommentedPostID);// commentedPostID);
+            var user = this.PersistenceContext.Users.FirstOrDefault(u => u.UserName == theComment.CommentAuthor);
+            var post = this.PersistenceContext.Posts.FirstOrDefault(p => p.Id == theComment.CommentedPostID);
             PostComment comment = new Models.PostComment
             {
                 Content = theComment.Content,
